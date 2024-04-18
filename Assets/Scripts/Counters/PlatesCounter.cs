@@ -12,7 +12,7 @@ public class PlatesCounter : BaseCounter
     public event EventHandler OnPlateSpawned;
     public event EventHandler OnPlateRemoved;
     private float spawnPlateTimer;
-    private float spawnPlateTimerMax = 4f;
+    private float spawnPlateTimerMax = 2f;
     private int plateSpawnAmount;
     private int plateSpawnAmountMax = 4;
 
@@ -22,7 +22,7 @@ public class PlatesCounter : BaseCounter
         if (spawnPlateTimer > spawnPlateTimerMax)
         {
             spawnPlateTimer = 0f;
-            if (plateSpawnAmount < plateSpawnAmountMax)
+            if (GameHandler.Instance.IsGamePlaying() && plateSpawnAmount < plateSpawnAmountMax)
             {
                 plateSpawnAmount++;
                 // KitchenObject.kitchenObjectSpawn(plateKitchenObjectSO, this);
